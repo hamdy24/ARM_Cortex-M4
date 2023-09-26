@@ -97,7 +97,6 @@ ES_t STK_enuDelay_Blocking(uint32_t Copy_u32Interval_ms){
 	while(IS_BIT_SET(STK->CTRL,STK_CTRL_COUNT_FLAG_POS))
 
 
-
 	/** Disable SysTick Timer ***/
 	CLR_BIT(STK->CTRL,STK_CTRL_ENABLE_POS);
 	/** Set the Load Value **/
