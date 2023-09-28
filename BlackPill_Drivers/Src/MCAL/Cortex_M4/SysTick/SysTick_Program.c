@@ -6,7 +6,7 @@
  *	Brief		: This file contains all the
  */
 
-#include "SysTick_Private.h"
+#include "../SysTick/SysTick_Private.h"
 
 
 ES_t STK_enuInit(STK_Cfg_t * Copy_pstrSTK_Configs){
@@ -21,15 +21,15 @@ ES_t STK_enuInit(STK_Cfg_t * Copy_pstrSTK_Configs){
 			/** Clear the Current to load the new value **/
 			STK->VAL = 0;
 			/** Select Clock Divider **/
-			if(STK_Pres_1 == Copy_pstrSTK_Configs->Prescaler){
+			if(STK_Pres_1 == Copy_pstrSTK_Configs->STK_Prescaler){
 
-				AHB_Clk = Copy_pstrSTK_Configs->AHB_ClockValue;
-				AHB_Pres = 1;
+				STK_AHB_Clk = Copy_pstrSTK_Configs->STK_AHB_ClockValue;
+				STK_AHB_Pres = 1;
 				SET_BIT(STK->CTRL,STK_CTRL_CLK_SOURCE_POS);
-			}else if(STK_Pres_8 == Copy_pstrSTK_Configs->Prescaler){
+			}else if(STK_Pres_8 == Copy_pstrSTK_Configs->STK_Prescaler){
 
-				AHB_Clk = Copy_pstrSTK_Configs->AHB_ClockValue;
-				AHB_Pres = 8;
+				STK_AHB_Clk = Copy_pstrSTK_Configs->STK_AHB_ClockValue;
+				STK_AHB_Pres = 8;
 				CLR_BIT(STK->CTRL,STK_CTRL_CLK_SOURCE_POS);
 			}
 			else{
@@ -76,33 +76,45 @@ ES_t STK_enuDeInit(void){
 
 	return Local_enuErrorState;
 }
+
+
+
 ES_t STK_enuDelay_Blocking(uint32_t Copy_u32Interval_ms){
 	ES_t Local_enuErrorState = ES_NOK;
+/****************************** WORKINGGGGG           ***************************************************************************/
+//    uint32_t targetTicks = (uint32_t)( (fint32_t)((fint32_t)Copy_u32Interval_ms * (STK_AHB_Clk / 1000.0)) / ((fint32_t)STK_AHB_Pres ));
+    uint32_t targetTicks = (uint32_t)( Copy_u32Interval_ms * ((STK_AHB_Clk) / (STK_AHB_Pres*1000.0 )) );
+//    targetTicks = 500000 = 1000 * (m  / 1000)
+    // Enable SysTick with AHB clock source and disable interrupt
+    SET_BIT(STK->CTRL,STK_CTRL_ENABLE_POS);
 
-    uint16_t Local_u16Overflow_Counter = 0;
+    while (targetTicks > 0) {
+        if (IS_BIT_CLEARED(STK->CTRL, STK_CTRL_COUNT_FLAG_POS)) {
+            targetTicks--;
+        }
+    }
 
+    // Disable SysTick
+    CLR_BIT(STK->CTRL,STK_CTRL_ENABLE_POS);
 
-    // TickTime = AHB_Pres/AHB_Clk;
-    // time(s) = tick time(s) * tick count
-    // count = time / tick time
-    // LOAD = ( (Copy_u32Interval_ms * AHB_Clk ) / (AHB_Pres * 1000))
-
-    /** Set the Load Value **/
-	STK->LOAD = ( (Copy_u32Interval_ms * AHB_Clk ) / (AHB_Pres * 1000));
-
-	/** Enable SysTick Timer ***/
-	SET_BIT(STK->CTRL,STK_CTRL_ENABLE_POS);
-
-    /* Count to the specified time in seconds */
-	while(IS_BIT_SET(STK->CTRL,STK_CTRL_COUNT_FLAG_POS))
-
-
-	/** Disable SysTick Timer ***/
-	CLR_BIT(STK->CTRL,STK_CTRL_ENABLE_POS);
-	/** Set the Load Value **/
-	STK->LOAD = 0;
-	/** Clear the Current to load the new value **/
-	STK->VAL = 0;
+/*********************************************************************************************************/
+//
+//    /** Set the Load Value **/
+//	STK->LOAD = ( (Copy_u32Interval_ms * AHB_Clk ) / (AHB_Pres * 1000));
+//
+//	/** Enable SysTick Timer ***/
+//	SET_BIT(STK->CTRL,STK_CTRL_ENABLE_POS);
+//
+//    /* Count to the specified time in seconds */
+//	while(IS_BIT_SET(STK->CTRL,STK_CTRL_COUNT_FLAG_POS))
+//
+//
+//	/** Disable SysTick Timer ***/
+//	CLR_BIT(STK->CTRL,STK_CTRL_ENABLE_POS);
+//	/** Set the Load Value **/
+//	STK->LOAD = 0;
+//	/** Clear the Current to load the new value **/
+//	STK->VAL = 0;
 
 	return Local_enuErrorState;
 }

@@ -6,17 +6,17 @@
  *	Brief		: This file contains all the
  */
 
-#ifndef MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_PRIVATE_H_
-#define MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_PRIVATE_H_
+#ifndef MCAL_CORTEX_M4_SYSTICK_SYSTICK_PRIVATE_H_
+#define MCAL_CORTEX_M4_SYSTICK_SYSTICK_PRIVATE_H_
 /************************************ Includes Start *************************************************/
 /************************************ Includes END  *************************************************/
+#include <MCAL/Cortex_M4/SysTick/SysTick_Config.h>
 #include "Common/CommonMacros.h"
 #include "Common/ErrorState.h"
 #include "Common/STD_Types.h"
 
 #include "MCAL/Cortex_M4/CortexM4_REG.h"
 
-#include "MCAL/Cortex_M4/SysTick_Driver/SysTick_Config.h"
 
 /************************************ Macros Start *************************************************/
 
@@ -46,8 +46,8 @@ CallBackFunc_t SysTick_CallBack = NULL;
 
 uint8_t SysTick_Mode = SysTick_SingleInterval;
 
-uint32_t AHB_Clk = 0;
-uint8_t AHB_Pres = 0;
+uint32_t STK_AHB_Clk = 0;
+uint8_t  STK_AHB_Pres= 0;
 /************************************ Module Private Declaration  END  *************************************************/
 
 /************************************ DataTypes Declaration Start *************************************************/
@@ -62,4 +62,4 @@ uint8_t AHB_Pres = 0;
 
 
 
-#endif /* MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_PRIVATE_H_ */
+#endif /* MCAL_CORTEX_M4_SYSTICK_SYSTICK_PRIVATE_H_ */

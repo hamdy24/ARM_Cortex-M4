@@ -6,19 +6,18 @@
  *	Brief		: This file contains all the
  */
 
-#ifndef MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_INTERFACE_H_
-#define MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_INTERFACE_H_
+#ifndef MCAL_CORTEX_M4_SYSTICK_SYSTICK_INTERFACE_H_
+#define MCAL_CORTEX_M4_SYSTICK_SYSTICK_INTERFACE_H_
 /************************************ Includes Start *************************************************/
-#include "SysTick_Config.h"
+#include <MCAL/Cortex_M4/SysTick/SysTick_Config.h>
 /************************************ Includes END  *************************************************/
 
 /************************************ Initialization Helper Start *************************************************/
 
 STK_Cfg_t STK_strConfigs = {
 	.State = STK_Enabled,
-	.Initial_Load = 1000,
-	.Prescaler = STK_Pres_8,
-	.AHB_ClockValue = 8000000,
+	.Initial_Load = 1000000,
+	.STK_Prescaler = STK_Pres_1,
 	.INT_State = true,
 };
 
@@ -37,4 +36,4 @@ ES_t STK_enuGetRemainingTicks(uint32_t * Copy_pu32ReturnedTicks);
 
 
 
-#endif /* MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_INTERFACE_H_ */
+#endif /* MCAL_CORTEX_M4_SYSTICK_SYSTICK_INTERFACE_H_ */

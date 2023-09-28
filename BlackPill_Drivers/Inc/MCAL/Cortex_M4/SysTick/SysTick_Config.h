@@ -6,8 +6,8 @@
  *	Brief		: This file contains all the
  */
 
-#ifndef MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_CONFIG_H_
-#define MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_CONFIG_H_
+#ifndef MCAL_CORTEX_M4_SYSTICK_SYSTICK_CONFIG_H_
+#define MCAL_CORTEX_M4_SYSTICK_SYSTICK_CONFIG_H_
 /************************************ Includes Start *************************************************/
 /************************************ Includes END  *************************************************/
 #include "Common/CommonMacros.h"
@@ -37,8 +37,8 @@ typedef enum{
 typedef struct{
 	STK_State_enuType State:1;
 	bool INT_State:1;
-	STK_Pres_enuType Prescaler:1;
-	uint32_t AHB_ClockValue;
+	STK_Pres_enuType STK_Prescaler:1;
+	uint32_t STK_AHB_ClockValue;
 	uint32_t Initial_Load;
 }STK_Cfg_t;
 
@@ -48,4 +48,4 @@ typedef struct{
 
 
 
-#endif /* MCAL_CORTEX_M4_SYSTICK_DRIVER_SYSTICK_CONFIG_H_ */
+#endif /* MCAL_CORTEX_M4_SYSTICK_SYSTICK_CONFIG_H_ */
