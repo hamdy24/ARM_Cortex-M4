@@ -10,20 +10,20 @@
 #define MCAL_RCC_RCC_INTERFACE_H_
 
 /************************************ Includes START  *************************************************/
-#include "RCC_Config.h"
+#include <MCAL/RCC/RCC_Config.h>
 /************************************ Includes END  *************************************************/
 
 /************************************ Initialization Helper Start *************************************************/
 
 RCC_OSC_Config_t OSC = {
-		.OSC_Type = RCC_OSC_HSE,
+		.OSC_Type  = RCC_OSC_HSE,
 		.HSE_State = RCC_OSC_ON,
 		.HSI_State = RCC_OSC_OFF,
 		.LSE_State = RCC_OSC_OFF,
 		.LSI_State = RCC_OSC_OFF,
 };
 RCC_Clock_Config_t CLK = {
-		.AHB_Pres = RCC_AHB_PRES_2,
+		.AHB_Pres  = RCC_AHB_PRES_2,
 		.APB1_Pres = RCC_APB1_PRES_4,
 		.APB2_Pres = RCC_APB1_PRES_8,
 };

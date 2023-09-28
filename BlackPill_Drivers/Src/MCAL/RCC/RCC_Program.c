@@ -7,8 +7,9 @@
  */
 
 
-#include "MCAL/RCC_Driver/RCC_Config.h"
-#include "RCC_Private.h"
+#include <MCAL/RCC/RCC_Config.h>
+
+#include "../RCC/RCC_Private.h"
 
 /***************************************************************/
 /*	Function Name: 	Name				                       */
