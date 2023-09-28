@@ -8,7 +8,7 @@
 #ifndef MCAL_SYSTEM_CONTROL_BLOCK_DRIVER_SCB_PRIVATE_H_
 #define MCAL_SYSTEM_CONTROL_BLOCK_DRIVER_SCB_PRIVATE_H_
 /**************************** Includes *********************************/
-#include <MCAL/Cortex_M4/SCB_Driver/SCB_config.h>
+#include <MCAL/Cortex_M4/SCB/SCB_config.h>
 #include "MCAL/Cortex_M4/CortexM4_REG.h"
 #include "Common/ErrorState.h"
 

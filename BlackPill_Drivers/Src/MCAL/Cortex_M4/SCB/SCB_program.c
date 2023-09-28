@@ -6,7 +6,7 @@
  */
 
 
-#include "../SCB_Driver/SCB_private.h"
+#include "../SCB/SCB_private.h"
 
 ES_t SCB_SetPriorityGrouping(uint8_t Copy_u8PriorityGroupNum){
 	ES_t Local_ErrorState =ES_NOK;
