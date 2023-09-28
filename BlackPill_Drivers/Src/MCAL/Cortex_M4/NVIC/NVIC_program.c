@@ -5,7 +5,7 @@
  *      Author: Hamdy Aouf
  */
 
-#include "NVIC_private.h"
+#include "../NVIC/NVIC_private.h"
 /*
  * Disabled
  * Enabled

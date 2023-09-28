@@ -9,6 +9,7 @@
 #define MCAL_NVIC_DRIVER_NVIC_PRIVATE_H_
 
 /************************* Includes ********************************/
+#include <MCAL/Cortex_M4/NVIC/NVIC_config.h>
 #include "Common/CommonMacros.h"
 #include "Common/ErrorState.h"
 #include "Common/STD_Types.h"
@@ -16,7 +17,6 @@
 
 #include "MCAL/Cortex_M4/CortexM4_REG.h"
 
-#include "MCAL/Cortex_M4/NVIC_Driver/NVIC_config.h"
 
 
 #define SHIFT_FIVE				5		/* Shift five to get register number from IRQn*/
