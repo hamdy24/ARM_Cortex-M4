@@ -17,7 +17,7 @@
  ****************************************************************************************************/
 
 #define MASK_BIT			  						1UL
-// Mask Helpers
+// Masking Helpers
 #define MASK_1BIT			  						1UL
 #define MASK_2BIT			  						3UL
 #define MASK_3BIT			  						7UL
