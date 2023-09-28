@@ -6,8 +6,8 @@
  *	Brief		: This file contains all the
  */
 
-#ifndef MCAL_GPIO_DRIVER_GPIO_CONFIG_H_
-#define MCAL_GPIO_DRIVER_GPIO_CONFIG_H_
+#ifndef MCAL_GPIO_GPIO_CONFIG_H_
+#define MCAL_GPIO_GPIO_CONFIG_H_
 /************************************ Includes Start *************************************************/
 
 #include "Common/STD_Types.h"
@@ -125,4 +125,4 @@ typedef enum{
 /************************************ DataTypes Declaration  END  *************************************************/
 
 
-#endif /* MCAL_GPIO_DRIVER_GPIO_CONFIG_H_ */
+#endif /* MCAL_GPIO_GPIO_CONFIG_H_ */

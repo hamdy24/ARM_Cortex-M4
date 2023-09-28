@@ -6,23 +6,23 @@
  *	Brief		: This file contains all the
  */
 
-#ifndef MCAL_GPIO_DRIVER_GPIO_PRIVATE_H_
-#define MCAL_GPIO_DRIVER_GPIO_PRIVATE_H_
+#ifndef MCAL_GPIO_GPIO_PRIVATE_H_
+#define MCAL_GPIO_GPIO_PRIVATE_H_
 /************************************ Includes Start *************************************************/
 
+#include <MCAL/GPIO/GPIO_Config.h>
 #include "Common/CommonMacros.h"
 #include "Common/STD_Types.h"
 #include "Common/ErrorState.h"
 
 #include "MCAL/STM32F401_REG.h"
-#include "MCAL/GPIO_Driver/GPIO_Config.h"
 
 /************************************ Includes END  *************************************************/
 
 /************************************ Macros Start *************************************************/
 
 #define BITS_OFFSET				2
-
+#define BSRR_RESET_OFFSET		16
 /************************************ Macros END  *************************************************/
 
 /************************************ HelperEnums Declaration Start *************************************************/
@@ -51,4 +51,4 @@ typedef enum{
 
 
 
-#endif /* MCAL_GPIO_DRIVER_GPIO_PRIVATE_H_ */
+#endif /* MCAL_GPIO_GPIO_PRIVATE_H_ */

@@ -8,7 +8,7 @@
 
 /************************************ Includes Start *************************************************/
 
-#include "GPIO_Private.h"
+#include "../GPIO/GPIO_Private.h"
 
 /************************************ Includes END  *************************************************/
 
@@ -246,6 +246,61 @@ ES_t GPIO_enuSetPinAlternateFunc(GPIO_Pins_t Copy_u8PinID ,GPIO_AlterFunc_t Copy
 	ES_t Local_enuErrorState = ES_NOK;
 
 
+	return Local_enuErrorState;
+}
+
+
+/****************************************************************************/
+/*	Description:	This Function Sets output Type push-pull or open-drain	*/
+/*	Parameters:							                       				*/
+/*		@param1:	Pin Number				    		                   	*/
+/*		&param2:	Output Type						                       	*/
+/*	Return:			Returns Error State 	            		           	*/
+/*	Notes:			You still have to enable the Port Clock first 		 	*/
+/****************************************************************************/
+ES_t GPIO_enuSetPinValue_Direct(GPIO_Pins_t Copy_u8PinID ,GPIO_Logic_t Copy_enuValue){
+	ES_t Local_enuErrorState = ES_NOK;
+	/** BSRR	is Directly changing state of the pin without or>>> reg |= value instead it does>>> reg = value **/
+	/** note when doing this every other bits will be written to zero but it's ok as writing zero = no effect **/
+
+	if(Copy_u8PinID <= GPIO_PC15 && Copy_u8PinID >= GPIO_PA0 ){
+
+		if(Copy_enuValue == GPIO_Set){
+
+			if(Copy_u8PinID <= GPIO_PA15){
+				GPIOA->BSRR = (MASK_1BIT<<Copy_u8PinID);
+			}
+			else if(Copy_u8PinID <= GPIO_PB15){
+				Copy_u8PinID -= GPIO_PB0;
+				GPIOB->BSRR = (MASK_1BIT<<Copy_u8PinID);
+			}
+			else{
+				Copy_u8PinID -= (GPIO_PB15+1);
+				GPIOC->BSRR = (MASK_1BIT<<Copy_u8PinID);
+			}
+
+		}else if(Copy_enuValue == GPIO_Reset){
+
+			if(Copy_u8PinID <= GPIO_PA15){
+				GPIOA->BSRR = (MASK_1BIT<<(Copy_u8PinID + BSRR_RESET_OFFSET));
+			}
+			else if(Copy_u8PinID <= GPIO_PB15){
+				Copy_u8PinID -= GPIO_PB0;
+				GPIOB->BSRR = (MASK_1BIT<<(Copy_u8PinID + BSRR_RESET_OFFSET));
+			}
+			else{
+				Copy_u8PinID -= (GPIO_PB15+1);
+				GPIOC->BSRR = (MASK_1BIT<<(Copy_u8PinID + BSRR_RESET_OFFSET));
+			}
+
+		}
+		else{
+			Local_enuErrorState = ES_INVALID_INPUTS;
+		}
+	}
+	else{
+		Local_enuErrorState = ES_INVALID_INPUTS;
+	}
 	return Local_enuErrorState;
 }
 

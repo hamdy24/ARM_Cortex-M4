@@ -6,11 +6,11 @@
  *	Brief		: This file contains all the
  */
 
-#ifndef MCAL_GPIO_DRIVER_GPIO_INTERFACE_H_
-#define MCAL_GPIO_DRIVER_GPIO_INTERFACE_H_
+#ifndef MCAL_GPIO_GPIO_INTERFACE_H_
+#define MCAL_GPIO_GPIO_INTERFACE_H_
 /************************************ Includes Start *************************************************/
 
-#include "GPIO_Config.h"
+#include <MCAL/GPIO/GPIO_Config.h>
 
 /************************************ Includes END  *************************************************/
 
@@ -41,4 +41,4 @@ ES_t GPIO_enuGetPortValue(GPIO_Port_t Copy_u8PortID ,uint8_t * Copy_pu8RetPortVa
 
 
 
-#endif /* MCAL_GPIO_DRIVER_GPIO_INTERFACE_H_ */
+#endif /* MCAL_GPIO_GPIO_INTERFACE_H_ */
