@@ -29,20 +29,25 @@ extern "C" {
 /************************************ Includes Start *************************************************/
 /************************************ Includes END  *************************************************/
 
-#include "Common/CommonMacros.h"
-#include "Common/ErrorState.h"
-#include "Common/STD_Types.h"
+#include "../STM32F401_Drivers/Common/CommonMacros.h"
+#include "../STM32F401_Drivers/Common/ErrorState.h"
+#include "../STM32F401_Drivers/Common/STD_Types.h"
 
-#include "MCAL/Cortex_M4/CortexM4_REG.h"
-#include "MCAL/STM32F401_REG.h"
+#include "../STM32F401_Drivers/MCAL/Cortex_M4/CortexM4_REG.h"
+#include "../STM32F401_Drivers/MCAL/STM32F401_REG.h"
 
-#include "MCAL/RCC_Driver/RCC_Interface.h"
-#include "MCAL/GPIO_Driver/GPIO_Interface.h"
+#include <../STM32F401_Drivers/MCAL/RCC/RCC_Interface.h>
+#include <../STM32F401_Drivers/MCAL/GPIO/GPIO_Interface.h>
+#include "../STM32F401_Drivers/MCAL/EXTI/EXTI_Interface.h"
+#include "../STM32F401_Drivers/MCAL/SYSCFG/SYSCFG_Interface.h"
+
+#include <../STM32F401_Drivers/MCAL/Cortex_M4/NVIC/NVIC_interface.h>
+#include <../STM32F401_Drivers/MCAL/Cortex_M4/SysTick/SysTick_Interface.h>
+#include <../STM32F401_Drivers/MCAL/Cortex_M4/SCB/SCB_interface.h>
 
 
-#include "MCAL/Cortex_M4/NVIC_Driver/NVIC_interface.h"
-#include "MCAL/Cortex_M4/SysTick_Driver/SysTick_Interface.h"
-#include "MCAL/Cortex_M4/SCB_Driver/SCB_interface.h"
+#include "../STM32F401_Drivers/HAL/LCD/LCD_Interface.h"
+
 
 
 /* Private includes ----------------------------------------------------------*/
